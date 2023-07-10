@@ -1,0 +1,18 @@
+.homeBottom{
+    font-family: 'Work Sans';
+    font-style: normal;
+}
+
+.homeBottom .row{
+    margin-top: 20%;
+    background-color: rgb(182, 225, 225);
+}
+
+.homeBottom h3, .homeBottom th{
+    color: #1E3A8A;
+    font-weight: 600;
+}
+
+.homeBottom p{
+    color: #4B5563;
+}

@@ -1,0 +1,22 @@
+body{
+    font-family: 'Work Sans';
+    font-style: normal;
+}
+
+h1{
+    font-weight: 800;
+    color: #1E3A8A;
+}
+
+.contact input:focus{
+    outline: none;
+}
+
+.contact h3{
+    font-weight: 800;
+    color: #1F2937
+}
+
+.contact input{
+    font-size: 15px;
+}

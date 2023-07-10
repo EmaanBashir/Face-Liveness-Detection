@@ -1,0 +1,61 @@
+{% load static %}
+
+<div class="homeBottom">
+    <img src={% static 'images/homeBackground2.png' %} class="w-100" alt="">
+    <div class="row mx-0 mt-0">
+        <div class="col-md-1 d-none d-md-inline"></div>
+        <div class="col-8 col-md-5 mx-auto">
+            <div class="mb-5">
+                <h3>Get In Touch</h3>
+                <input class="rounded-pill border-0 w-100 py-2 px-3 mt-3" type="text"
+                    placeholder="Enter Your Email Address">
+            </div>
+            <img class="mt-5 mb-0 d-none d-md-inline" src={% static 'images/logo.png' %} alt="">
+        </div>
+        <div class="col-lg-1 d-none d-lg-inline"></div>
+
+        <div class="col-12 col-sm-10 col-md-6 col-lg-5 px-5 mx-auto">
+            <table class="mx-auto">
+                <tr>
+                    <th class="me-5 py-3" onclick="window.location.href = '{% url 'home' %}'">Home</th>
+                    <th class="me-5" onclick="window.location.href = '{% url 'services' %}'">Services</th>
+                </tr>
+                <tr>
+                    <td>
+                        <p class="me-5"
+                            onclick="window.location.href = '  {% if navbar == 'home' %} #benefits {% else %} {% url 'home' %} {% endif %} '">
+                            Benefits</p>
+                        <p class="me-5"
+                            onclick="window.location.href = '{% if navbar == 'home' %} #applications {% else %} {% url 'home' %} {% endif %}'">
+                            Applications</p>
+                    </td>
+                    <td>
+                        <p class="me-5"
+                            onclick="window.location.href = '{% if navbar == 'services' %} #features {% else %} {% url 'services' %} {% endif %}'">
+                            Features</p>
+                        <p class="me-5"
+                            onclick="window.location.href = '{% if navbar == 'services' %} #howitworks {% else %} {% url 'services' %} {% endif %}'">
+                            How It Works</p>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="me-5 py-3" onclick="window.location.href = '{% url 'usecase' %}'">Use Cases</th>
+                    <th class="me-5 py-3" onclick="window.location.href = '{% url 'aboutus' %}'">About</th>
+                </tr>
+                <tr>
+                    <td>
+                        <p class="me-5"
+                            onclick="window.location.href = '{% if navbar == 'usecase' %} #entsec {% else %} {% url 'usecase' %} {% endif %}'">
+                            Enterprise Security</p>
+                    </td>
+                    <th class="me-5 py-3" onclick="window.location.href = '{% url 'contact' %}'">Contact</th>
+                </tr>
+                <tr>
+                    <td>
+                        <p class="me-5">More</p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

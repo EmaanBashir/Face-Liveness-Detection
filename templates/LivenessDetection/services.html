@@ -1,0 +1,113 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href={% static 'css/navbar.css' %}>
+    <link rel="stylesheet" href={% static 'css/services.css' %}>
+    <link rel="stylesheet" href={% static 'css/footer.css' %}>
+    <title>Services</title>
+</head>
+
+<body>
+    {% include 'LivenessDetection/navbar.html' %}
+
+    <div class="container-xl" id = 'features'>
+        <h1 class="text-center my-5">SERVICES</h1>
+        <div class="row p-3">
+            <div class="col-12 col-md-6 px-4 px-sm-3 py-3">
+                <div class="rounded-3 service text-center d-inline-block p-5">
+                    <img class="img-fluid p-5" src={% static 'images/identification.png' %} alt="">
+                    <h3 class="py-2">IDENTIFICATION</h3>
+                    <p class="text-start ps-3 pe-1">
+                        Our Facial Liveness Detection System verifies the authenticity of a person's presence in
+                        real-time through video analysis to ensure secure and efficient access.
+                    </p>
+                    <button onclick="identification()" class="btn rounded-pill text-white mx-auto px-5 py-2">View more</button>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 px-4 px-sm-3 py-3">
+                <div class="rounded-3 service text-center d-inline-block p-5">
+                    <img class="img-fluid p-5" src={% static 'images/verification.png' %} alt="">
+                    <h3 class="py-2">VERIFICATION</h3>
+                    <p class="text-start ps-3 pe-1">
+                        Our Verification feature verifies identity through video analysis for secure and efficient
+                        access. Trust us to protect your information with reliable identity verification.
+                    </p>
+                    <button onclick="verification()" class="btn rounded-pill text-white mx-auto px-5 py-2">View more</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<span id = 'howitworks'>
+    <div class="container-xl identification py-5">
+        <h1 class="text-center my-5">IDENTIFICATION</h1>
+        <div class="row px-5 d-flex align-items-center justify-content-center justify-content-md-start">
+            <div class="col-12 col-md-7 order-last order-md-first py-0 py-md-5 px-5 text-start">
+                <p class="py-2">Our Facial Liveness Detection System uses advanced technology to accurately identify
+                    whether a person is real or not. The identification service works by analyzing a video of the person
+                    and verifying the authenticity of their presence. With this system in place, you can rest assured
+                    that only genuine individuals have access to your secure information.</p>
+            </div>
+            <img class="col-12 col-sm-9 col-md-5 order-first order-md-last p-5 p-md-2 p-lg-3 p-xl-5 img-fluid" 
+            src={% static 'images/identification.png' %} alt="">
+        </div>
+
+        <h1 class="text-center my-5">HOW IT WORKS</h1>
+        <img draggable="false" class="my-4 mx-auto px-3 img-fluid" src={% static 'images/identification-steps.png' %}
+            alt="">
+    </div>
+
+    <div class="container-xl verification py-5 d-none">
+        <h1 class="text-center my-5">VERIFICATION</h1>
+        <div class="row px-5 d-flex align-items-center justify-content-center justify-content-md-start">
+            <div class="col-12 col-md-7 order-last order-md-first py-0 py-md-5 px-5 text-start">
+                <p class="py-2">
+                    Our Facial Liveness Detection System's verification service confirms a person's identity through
+                    video analysis. The system uses advanced technology to accurately match the video with the
+                    individual's biometric information, ensuring secure and efficient verification. Trust us to protect
+                    your information with reliable and secure identity verification.
+                </p>
+            </div>
+            <img class="col-12 col-sm-9 col-md-5 order-first order-md-last p-5 p-md-2 p-lg-3 p-xl-5 img-fluid" 
+            src={% static 'images/verification.png' %} alt="">
+        </div>
+
+        <h1 class="text-center my-5">HOW IT WORKS</h1>
+        <img draggable="false" class="my-4 mx-auto px-3 img-fluid" src={% static 'images/verification-steps.png' %} alt="">
+    </div>
+</span>
+    {% include 'LivenessDetection/footer.html' %}
+
+    <script>
+        function identification(){
+            let identificationElement = document.querySelector(".identification");
+            let verificationElement = document.querySelector(".verification");
+            identificationElement.classList.remove("d-none");
+            verificationElement.classList.add("d-none");
+            window.location.href = '#howitworks'
+        }
+
+        function verification(){
+            let identificationElement = document.querySelector(".identification");
+            let verificationElement = document.querySelector(".verification");
+            console.log(identificationElement)
+            identificationElement.classList.add("d-none");
+            verificationElement.classList.remove("d-none");
+            window.location.href = '#howitworks'
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

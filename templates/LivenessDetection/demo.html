@@ -1,0 +1,216 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans&display=swap" rel="stylesheet" />
+    <script>
+        var model_url = "{% static '/js/face_detection_models' %}";
+    </script>
+    <script defer src={% static '/js/face-api.min.js' %}></script>
+    <!-- <script defer src={% static '/js/videoDownload(extra).js' %}></script> -->
+    <link rel="stylesheet" href={% static 'css/navbar.css' %}>
+    <link rel="stylesheet" href={% static 'css/webcam.css' %}>
+    <title>Face Detection</title>
+
+</head>
+
+<body>
+    {% include 'LivenessDetection/navbar.html' %}
+
+    <div class="modal" id='my-modal' tabindex="-1" data-bs-backdrop="static">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+
+                <div class="modal-body p-0">
+                    <div class="row">
+                        <div class="d-none d-lg-inline col-lg-6 light-bg rounded-start">
+                            <img class="img-fluid w-100 h-100" src={% static 'images/skeleton.png' %} alt="">
+                        </div>
+                        <div class="col-lg-6 text-center py-3 px-4">
+                            <div class="d-flex justify-content-end align-items-center">
+                                <div class="close-button">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                                        onclick="loadImage()">
+                                    </button>
+                                </div>
+                            </div>
+                            <h5 class="dark-blue text-start mb-0">Welcome!</h5>
+                            <h5 class="dark-blue text-start mt-0"></h5>
+                            <img class="img-fluid w-75 my-2" src={% static 'images/demo-intro.png' %} alt="">
+                            {% if type == 'video_feed' %}
+                            <p class="pink text-start">As shown in the picture above, adjust your eyes in the frame
+                                shown on your
+                                screen and follow the blue dot.</p>
+                            {% else %}
+                            <p class="pink text-start">As shown in the picture above, adjust your face in the frame
+                                shown on your
+                                screen and wait for a few seconds.</p>
+                            {% endif %}
+
+                            <a class="btn contact-btn text-white rounded-pill px-5 py-2" data-bs-dismiss="modal"
+                                onclick="loadImage()">Continue</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="py-3 min-vh-100 text-center">
+        <div id="" class="mx-auto my-auto col-11 col-sm-10 col-md-8 col-lg-7 col-xl-6 w-100">
+            <img id="face-img" class="w-100" style="max-height: 85vh;" alt="">
+        </div>
+        {% if type != 'video_feed' %}
+        <div class="mt-3 instructions">
+            <p id='extra-text' class="blue my-0 w-50 mx-auto text-center">Adjust your face in the frame shown on your
+                screen and wait
+                for a few seconds. </p>
+            <a id="feedback-btn" class="btn contact-btn text-white rounded-pill px-5 py-2 mx-auto"
+                onclick="feedback()">Continue</a>
+        </div>
+        {% endif %}
+    </div>
+
+    <div class="modal" id='feedback-modal' tabindex="-1" data-bs-backdrop="static">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+
+                <div class="modal-body p-0">
+                    <div class="row">
+                        <div class="d-none d-lg-inline col-lg-6 light-bg rounded-start">
+                            <img class="img-fluid w-100 h-100" src={% static 'images/skeleton.png' %} alt="">
+                        </div>
+                        <div class="col-lg-6 text-center py-3 px-4">
+                            <div class="d-flex justify-content-end align-items-center">
+                                <div class="close-button">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                    </button>
+                                </div>
+                            </div>
+                            <form action="{% url 'webcam' %}" method="post">
+                                {% csrf_token %}
+                                <div class="my-4">
+                                    <b id="bf-result" class='my-4'></b>
+                                    <p>Was the result of Blood Flow Analysis Correct?</p>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="blood-flow"
+                                            id="blood-flow-yes" value="yes" required>
+                                        <label class="form-check-label" for="blood-flow-yes">Yes</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="blood-flow"
+                                            id="blood-flow-no" value="no" required>
+                                        <label class="form-check-label" for="blood-flow-no">No</label>
+                                    </div>
+                                </div>
+                                <div class="my-4">
+                                    <b id="texture-result" class="my-4"></b>
+                                    <p>Was the result Texture Analysis Correct?</p>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="texture" id="texture-yes"
+                                            value="yes" required>
+                                        <label class="form-check-label" for="texture-yes">Yes</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="texture" id="texture-no"
+                                            value="no" required>
+                                        <label class="form-check-label" for="texture-no">No</label>
+                                    </div>
+                                </div>
+                                <input type="hidden" name="bloodflow-actual" id="bloodflow-actual">
+                                <input type="hidden" name="texture-actual" id="texture-actual">
+                                <input type="hidden" name="fold-name" id="fold-name">
+                                <button class="btn contact-btn text-white rounded-pill px-5 py-2"
+                                    type="submit">Continue</button>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        if ("{{type}}" != "video_feed") {
+            document.getElementById("feedback-btn").style.display = 'none';
+        }
+
+        function loadImage() {
+            var myImage = document.getElementById("face-img");
+            myImage.setAttribute("src", "{% url type %}");
+        }
+
+        function feedback() {
+            var feedbackModal = new bootstrap.Modal(document.getElementById('feedback-modal'))
+            feedbackModal.show()
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var myModal = new bootstrap.Modal(document.getElementById('my-modal'));
+            myModal.show();
+        });
+
+        function fetchData() {
+            fetch('/fetch_result/')
+                .then(response => response.json())
+                .then(data => {
+                    // Handle the response from the Django view
+                    if (data.result_available) {
+
+                        feedback_btn = document.getElementById("feedback-btn");
+                        feedback_btn.style.display = 'inline';
+                        document.getElementById("extra-text").style.display = 'none';
+                        document.getElementById("bf-result").textContent = 'Blood Flow Analysis: ' + (data.bloodflow_result == 0 ? 'Real' : 'Fake');
+                        document.getElementById("texture-result").textContent = 'Texture Analysis: ' + (data.texture_result == 0 ? 'Real' : 'Fake');
+                        document.getElementById('bloodflow-actual').value = data.bloodflow_result;
+                        document.getElementById('texture-actual').value = data.texture_result;
+                        document.getElementById('fold-name').value = data.fold_name;
+
+                        feedback_btn.scrollIntoView({ behavior: 'smooth', block: 'end' });
+
+                        stopInterval();
+                    }
+                })
+                .catch(error => {
+                    // Handle any errors that occur during the request
+                    console.log(error);
+                });
+        }
+
+        if ("{{type}}" != 'video_feed') {
+
+            // Set the interval for fetching the API
+            const interval = setInterval(fetchData, 3000); // Every 5 seconds
+
+            // Stop the interval when the specific answer is received
+            function stopInterval() {
+                clearInterval(interval);
+            }
+        }
+
+
+
+
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
+        integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,90 @@
+body {
+    background-color: #E3EFEF;
+    background-image: url("../images/background.png");
+    background-size: cover;
+    font-family: 'Work Sans';
+    font-style: normal;
+  }
+
+  .webcam {
+    border: 5px solid #8FC9C9;
+    /* clip-path: ellipse(27% 47% at 50% 50%);  */
+    width: 85%;
+    height: 100%;
+    border-radius: 50%;
+  }
+
+  .bloodflowoval{
+    border: 5px solid #8FC9C9;
+  }
+  
+  .instructions {
+    font-family: 'Work Sans';
+    font-style: normal;
+    font-size: 19px;
+  }
+  
+  #webcamDiv{
+    position: relative;
+    height: 67vh;
+  }
+  
+  canvas{
+    position:absolute;
+    left: 0px;
+    top: 0px;
+  }
+
+  @media(min-width:576px) {
+    .webcam {
+      width: 70%;
+    }
+  
+    @media(min-width:768px) {
+      .webcam {
+        width: 60%;
+      }
+  
+      .instructions {
+        font-size: 22px;
+      }
+    }
+  
+    @media(min-width:992px) {
+      .webcam {
+        width: 52%;
+      }
+    }
+  
+    @media(min-width:1200px) {
+      .webcam {
+        width: 48%;
+      }
+    }
+  }
+  
+  .blue {
+    color: #1E3A8A;
+  
+  }
+  
+  .green {
+    color: #03A300;
+  
+  }
+  
+  .red {
+    color: #E00707;
+  }
+
+  .pink{
+    color: #FE00A8
+  }
+
+  .dark-blue{
+    color: #1E3A8A;
+  }
+
+  .light-bg{
+    background-color: #B6E1E1
+  }

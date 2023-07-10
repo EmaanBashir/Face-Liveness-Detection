@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans&display=swap" rel="stylesheet" />
+    <script>
+        var model_url = "{% static '/js/face_detection_models' %}";
+    </script>
+    <script defer src={% static '/js/face-api.min.js' %}></script>
+    <script defer src={% static '/js/faceDetection.js' %}></script>
+    <link rel="stylesheet" href={% static 'css/navbar.css' %}>
+    <link rel="stylesheet" href={% static 'css/webcam.css' %}>
+    <title>Face Detection</title>
+</head>
+
+<body>
+    {% include 'LivenessDetection/navbar.html' %}
+    <div class="py-3 min-vh-100 text-center">
+        <div id = "webcamDiv" class = "mx-auto my-auto col-11 col-sm-10 col-md-8 col-lg 7 col-xl-6">
+            <!-- <video class="webcam w-100"
+            id="inputVideo" autoplay muted></video> -->
+            <img class = "webcam" src="{% url 'video_feed' %}" alt="">
+        </div>
+        
+        <div class="mt-3 instructions">
+            <!-- <a href="{% url 'video_feed' %}">{{output}} is this</a> -->
+            <h1>{{iris_pos}}</h1>
+            <p class="blue my-0">Instructions. Yes. Stay Here.</p>
+            <p class="green my-0">Yes Great. Please Wait.</p>
+            <p class="red my-0">Move here there. Find better light etc.</p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
+        integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

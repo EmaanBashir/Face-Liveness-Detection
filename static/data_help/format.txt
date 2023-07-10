@@ -1,0 +1,16 @@
+folder names: (0 is real, 1 is fake)
+
+video0_(bloodflow result)_(texture result)_(actual)
+
+video0_0_1_1 means bloodflow predicted real and texture predicted fake for video0 and actually it was fake
+
+
+
+Frame names: (0 is real, 1 is fake)
+
+frame0_(texture result)
+
+frame0_1.png means texture predicted fake for frame0
+
+
+

@@ -1,0 +1,30 @@
+.nav-link, .dropdown-item {
+    font-family: 'Work Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    color: #1E3A8A;
+}
+
+.nav-link:hover, .dropdown-item:hover {
+    font-weight: 600;
+    color: #1E3A8A !important;
+}
+
+.dropdown-item, .dropdown-menu, .dropdown-item:active{
+    background-color: #F0F9F9;
+}
+
+.active {
+    color: #1E3A8A !important;
+    font-weight: 600;
+}
+
+
+.contact-btn {
+    background-color: #1E3A8A;
+}
+
+.contact-btn:hover {
+    background-color: rgba(30, 58, 138, 0.85);
+}

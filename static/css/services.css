@@ -1,0 +1,50 @@
+body{
+    font-family: 'Work Sans';
+    font-style: normal;
+}
+
+h1{
+    font-family: 'Work Sans';
+    font-style: normal;
+    font-weight: 800;
+    color: #1E3A8A;
+}
+
+h3{
+    font-family: 'Work Sans';
+    font-style: normal;
+    font-weight: 800;
+    color: #1E3A8A;
+}
+
+.service{
+    background-color: #F0F9F9;
+    font-family: 'Work Sans';
+    font-style: normal;
+}
+
+.service h5{
+    color: #1F2937;
+    font-weight: 500;
+}
+
+.service p{
+    color: #4B5563;
+    font-weight: 400;
+    font-size: 19px;
+}
+
+.service button{
+    background-color: #1E3A8A;
+}
+
+.service button:hover {
+    background-color: rgba(30, 58, 138, 0.85);
+}
+
+.identification p, .verification p{
+    color: #4B5563;
+    font-weight: 400;
+    font-size: 20px;
+}
+

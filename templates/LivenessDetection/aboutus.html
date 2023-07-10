@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href={% static 'css/navbar.css' %}>
+    <link rel="stylesheet" href={% static 'css/aboutus.css' %}>
+    <link rel="stylesheet" href={% static 'css/footer.css' %}>
+    <title>About Us</title>
+</head>
+
+<body>
+    {% include 'LivenessDetection/navbar.html' %}
+
+    <div class="px-3 mx-5 about">
+        <h1 class="text-center my-5">ABOUT US</h1>
+        <div class="row py-5">
+            <div class="col-sm-4 col-md-3 px-md-3 px-lg-4 px-xl-5 d-none d-sm-inline">
+                <img class="img-fluid" src={% static 'images/logo-large.png' %} alt="">
+            </div>
+            <div class="col-12 col-sm-8 col-md-9 px-sm-4 px-md-5">
+                <h1 class="mb-3">FACE LIVENESS DETECTION</h1>
+                <h3></h3>
+            </div>
+        </div>
+        <p class="py-4">This is a cutting-edge facial liveness detection system that provides secure authentication
+            and
+            verification processes. Designed to combat spoofing attacks, it utilizes passive techniques to confirm
+            the authenticity of a person in real-time. With applications in enterprise security, digital banking,
+            healthcare, telecom providers, and more, This is a versatile solution that helps ensure the safety and
+            security of sensitive information. Whether you're looking to reduce fraud in financial transactions or
+            ensure patient privacy in the healthcare industry, this is the solution you can trust.</p>
+    </div>
+
+    <div class="container-xl about">
+        <h1 class="text-center my-5">OUR TEAM</h1>
+        <div
+            class="row p-md-3 p-lg-0 py-0 py-lg-5 d-flex align-items-center application justify-content-center justify-content-md-start">
+            <img class="col-12 col-sm-9 col-md-5 order-first p-5 p-md-2 p-lg-3 p-xl-5 img-fluid" 
+            src={% static 'images/team.png' %} alt="">
+            <div class="col-12 col-md-7 order-last py-0 py-md-5 px-5 text-start">
+                <p class="py-2">This system was founded by a talented team of three software engineering students who saw
+                    the need for advanced facial liveness detection technology. As part of their final year project,
+                    they came together to bring their innovative idea to life, and this was born. With their passion
+                    for innovation and drive to make a positive impact, the founding team is dedicated to continuing to
+                    develop and improve the system as a cutting-edge solution for secure identity verification. </p>
+            </div>
+        </div>
+
+        <h1 class="text-center my-5">VISION MISSION AND VALUES</h1>
+        <div
+            class="row p-md-3 p-lg-0 py-0 py-md-5 d-flex align-items-center application justify-content-center justify-content-md-start">
+            <img class="col-12 col-sm-9 col-md-5 order-first p-5 p-md-2 p-lg-3 p-xl-5 img-fluid" 
+            src={% static 'images/mission.png' %} alt="">
+            <div class="col-12 col-md-7 order-last py-0 py-md-5 px-5 text-start">
+                <p class="py-2">Our mission is to provide innovative and secure authentication solutions that meet the
+                    evolving needs of businesses and individuals. By delivering the most advanced facial liveness
+                    detection technology, we strive to ensure the privacy and security of sensitive information.
+                    We are driven to continuously improve and advance our technology to meet the ever-changing needs of
+                    our clients. e believe that privacy and security are non-negotiable and prioritize these values in
+                    all aspects of our business. </p>
+            </div>
+        </div>
+    </div>
+
+    {% include 'LivenessDetection/footer.html' %}
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

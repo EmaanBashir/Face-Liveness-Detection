@@ -1,0 +1,39 @@
+{% load static %}
+
+<nav class="navbar navbar-expand-md navbar-light">
+    <div class="container-xl px-5 px-xl-0 py-3">
+        <a class="navbar-brand" href={% url 'home' %}>
+            <img src={% static 'images/logo.png' %} alt="Fortify">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse text-md-start text-center" id="navbarSupportedContent">
+            <ul class="navbar-nav mx-auto mb-2 mb-lg-0 w-50">
+                <li class="nav-item mx-auto">
+                    <a class="nav-link {% if navbar == 'home' %} active {% endif %}" aria-current="page" href={% url 'home' %}>Home</a>
+                </li>
+                <li class="nav-item mx-auto">
+                    <a class="nav-link {% if navbar == 'services' %} active {% endif %}" href={% url 'services' %}>Services</a>
+                </li>
+                <li class="nav-item mx-auto">
+                    <a class="nav-link {% if navbar == 'aboutus' %} active {% endif %}" href={% url 'aboutus' %}>About</a>
+                </li>
+                <li class="nav-item mx-auto dropdown">
+                    <a class="nav-link {% if navbar == 'demo' %} active {% endif %}" href="#" role="button" id="demoDropdown" data-bs-toggle="dropdown" aria-expanded="false">Demo</a>
+                    <ul class="dropdown-menu" aria-labelledby="demoDropdown">
+                        <li><a class="dropdown-item" href={% url 'eyeball' %}>Eyeball Tracking</a></li>
+                        <li><a class="dropdown-item" href={% url 'webcam' %}>Texture & Bloodflow Analysis</a></li>
+                        <li><a class="dropdown-item" href={% url 'real-time-bloodflow' %}>Real Time Bloodflow Analysis</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item mx-auto">
+                    <a class="nav-link {% if navbar == 'usecase' %} active {% endif %}" href={% url 'usecase' %}>Usecase</a>
+                </li>
+            </ul>
+            <a class="btn contact-btn text-white rounded-pill px-5 py-2" href={% url 'contact' %}>Contact Us</a>
+        </div>
+    </div>
+</nav>

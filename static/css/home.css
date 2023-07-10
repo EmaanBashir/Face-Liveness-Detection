@@ -1,0 +1,107 @@
+body{
+    font-family: 'Work Sans';
+    font-style: normal;
+    background-color: #fff;
+    box-sizing: border-box;
+}
+
+.homeTop {
+    background-image: url("../images/homeBackground1.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    padding-bottom: 100px;
+}
+
+h1{
+    font-family: 'Work Sans';
+    font-style: normal;
+    font-weight: 800;
+    color: #1E3A8A;
+}
+
+.homeTop h1 {
+    font-weight: 900;
+    line-height: 120%;
+    letter-spacing: 0.05em;
+}
+
+.homeTop h1 span {
+    color: #FFB802;
+}
+
+.homeTop p {
+    font-family: 'Work Sans';
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    font-size: 19px;
+    letter-spacing: 0.05em;
+    color: #4B5563;
+}
+
+.try-btn {
+    background-color: #FFDE2F;
+    color: #1E3A8A;
+    width: 150px;
+    font-size: 16px;
+}
+
+.try-btn:hover {
+    background-color: #FFDE2F;
+    color: #1E3A8A;
+    border: 2px solid #1E3A8A;
+}
+
+.more-btn {
+    border: 2px solid #1E3A8A;
+    color: #1E3A8A;
+    width: 150px;
+    font-size: 16px;
+}
+
+.more-btn:hover {
+    background-color: #1E3A8A;
+    color: #fff;
+}
+
+.benefit{
+    background-color: #F0F9F9;
+    font-family: 'Work Sans';
+    font-style: normal;
+}
+
+.benefit h5{
+    color: #1F2937;
+    font-weight: 500;
+}
+
+.benefit p{
+    color: #4B5563;
+    font-weight: 400;
+    font-size: 13px;
+}
+
+.application{
+    font-family: 'Work Sans';
+    font-style: normal;
+}
+
+.application h2{
+    color: #1E3A8A;
+    font-weight: 600;
+}
+
+.application p{
+    color: #4B5563;
+    font-weight: 400;
+    font-size: 20px;
+}
+
+.application button{
+    background-color: #1E3A8A;
+}
+
+.application button:hover {
+    background-color: rgba(30, 58, 138, 0.85);
+}
+

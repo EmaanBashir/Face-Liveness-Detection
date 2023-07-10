@@ -1,0 +1,21 @@
+# Ignore virtual environment files
+venv/
+.venv/
+
+# Ignore database files
+db.sqlite3
+
+# Ignore IDE and editor files
+.vscode/
+.idea/
+
+# Ignore compiled Python files
+*.pyc
+
+# Ignore logs and other generated files
+logs/
+*.log
+
+static/data/
+.static/data/
+
