@@ -1,4 +1,3 @@
-# Face Liveness Detection System
 ![poster](https://github.com/user-attachments/assets/e863dd46-6f16-4a6f-a813-3005decfd85d)
 
 ## Table of Contents
